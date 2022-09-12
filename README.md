@@ -37,6 +37,14 @@ Para poder aprovecharse de estas funcionalidades, se pueden realizar las siguien
 - Se ha utilizado enlace de parametros (Binding Values) al realizar las consultas SQL para evitar posibles ataques de SQL Injection.
 - Se ha utilizado ActiveController para generar el CRUD de todos los elementos, pero si por seguridad se deseara limitar su uso, se puede hacer desde la configuración en web.php. NOTA: se ha deshabilitado la pluralización de las rutas.
 
+## _BONUS_
+Diseña y, si puedes, implementa un sistema para que quede un registro de cambios sobre los platos.
+Para guardar un registro de esos cambios sería interesante:
+- El Plato que se cambió
+- Qué acción se realizó. ¿Se quitó un ingrediente? ¿Se añadió otro ingrediente?
+- Registrar qué ingrediente se añadió o se quitó al Plato. Aquí es importante que si se elimina un ingrediente de un plato, no se elimine de la base de datos, ya que de lo contrario, perderíamos el registro asociado y por tanto la trazabilidad del cambio.
+- Fecha y hora en la que se produjo el cambio
+
 ## _Puntos de mejora_
 - Cambiar el nombre de usuario de administración de la Base de Datos
 - Encriptar la contraseña del usuario de la base de datos
