@@ -70,7 +70,6 @@ class PlatoAPICest
      */
     public function crearPlatoConIngredientesAlergenos(FunctionalTester $I){
         $I->agregarPlatoConAlergenosParaPruebas($I);
-
         $I->seeResponseCodeIs(200);
         $I->seeResponseIsJson();
         $I->seeResponseMatchesJsonType([
@@ -101,24 +100,6 @@ class PlatoAPICest
         );
     }
 
-    /**
-     * Prueba que dado un Alérgeno, se proporcionen todos los platos que lo contienen.
-     * @param FunctionalTester $I
-     * @return void
-     */
-    public function verPlatosContienenAlergeno(FunctionalTester $I){
-        $I->agregarPlatoConAlergenosParaPruebas($I);
-
-        $I->sendGet('plato?nombreAlergeno=Huevo');
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
-        $I->seeResponseMatchesJsonType([
-            'nombre' => 'string',
-        ]);
-        $I->seeResponseContainsJson(
-            ['nombre' => 'Tarta de Almendra']
-        );
-    }
 
     /**
      * Prueba que se proporcione toda la lista de Platos.

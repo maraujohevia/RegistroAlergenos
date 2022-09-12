@@ -38,4 +38,23 @@ class AlergenoAPICest
         $I->crearConNombreYaExistente($I, 'alergeno', 'Cacahuete');
     }
 
+    /**
+     * Prueba que dado un Alérgeno, se proporcionen todos los platos que lo contienen.
+     * @param FunctionalTester $I
+     * @return void
+     */
+    public function verPlatosContienenAlergeno(FunctionalTester $I){
+        $I->agregarPlatoConAlergenosParaPruebas($I);
+
+        $I->sendGet('alergeno/ver-platos?nombreAlergeno=Huevo');
+        $I->seeResponseCodeIs(200);
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesJsonType([
+            'nombre' => 'string',
+        ]);
+        $I->seeResponseContainsJson(
+            ['nombre' => 'Tarta de Almendra']
+        );
+    }
+
 }
