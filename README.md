@@ -45,6 +45,10 @@ Para guardar un registro de esos cambios sería interesante:
 - Registrar qué ingrediente se añadió o se quitó al Plato. Aquí es importante que si se elimina un ingrediente de un plato, no se elimine de la base de datos, ya que de lo contrario, perderíamos el registro asociado y por tanto la trazabilidad del cambio.
 - Fecha y hora en la que se produjo el cambio
 
+Se crearía entonces una tabla nueva en la base de datos que recogiera los datos citados anteriormente. Para abordar su programación:
+- Se podría crear una función específica para Auditar la modificación.
+- Esta acción se podría llamar desde el método `afterAction()`que proporciona Yii2, de manera que cuando se realice una acción, si es una de las que queremos auditar, se guarden los datos correspondientes.  
+
 ## _Puntos de mejora_
 - Cambiar el nombre de usuario de administración de la Base de Datos
 - Encriptar la contraseña del usuario de la base de datos
